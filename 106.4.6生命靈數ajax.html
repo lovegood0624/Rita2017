@@ -1,0 +1,231 @@
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="../../favicon.ico">
+
+  <title>Dashboard Template for Bootstrap</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  <!--<link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">-->
+
+  <!-- Custom styles for this template -->
+  <link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
+
+  <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+  <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+  <!--<script src="../../assets/js/ie-emulation-modes-warning.js"></script>-->
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<style>
+  .input-group {
+    font-family: 微軟正黑體
+  }
+</style>
+
+<body waid71fa0d88-5390-4b5b-a2f4-e45fa93d85e2="SA password protect entry checker" cz-shortcut-listen="true">
+
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+          aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        <a class="navbar-brand" href="#">Project name</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">Dashboard</a></li>
+          <li><a href="#">Settings</a></li>
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">Help</a></li>
+        </ul>
+        <form class="navbar-form navbar-right">
+          <input type="text" class="form-control" placeholder="Search...">
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3 col-md-2 sidebar">
+        <ul class="nav nav-sidebar">
+          <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
+          <li><a href="#">Reports</a></li>
+          <li><a href="#">Analytics</a></li>
+          <li><a href="#">Export</a></li>
+        </ul>
+        <ul class="nav nav-sidebar">
+          <li><a href="">Nav item</a></li>
+          <li><a href="">Nav item again</a></li>
+          <li><a href="">One more nav</a></li>
+          <li><a href="">Another nav item</a></li>
+          <li><a href="">More navigation</a></li>
+        </ul>
+        <ul class="nav nav-sidebar">
+          <li><a href="">Nav item again</a></li>
+          <li><a href="">One more nav</a></li>
+          <li><a href="">Another nav item</a></li>
+        </ul>
+      </div>
+      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+
+        <div class="input-group">
+          <span class="input-group-addon">請輸入生日<span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
+          <input id=input type="date" class="form-control" placeholder="年/月/日">
+          <span class="input-group-btn">
+            <button onclick="doAnalysis()" class="btn btn-default" type="button">分析結果</button>
+      </span>
+        </div>
+        <ul id="result" class="list-group">         
+        </ul>
+        <!-- /input-group -->
+
+        <!-- /.col-lg-6 -->
+      </div>
+      <!-- /.row -->
+
+
+
+
+      <div class="table-responsive">
+
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript
+    ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script>
+    window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')
+  </script>
+  <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+  <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+  <script src="http://getbootstrap.com/assets/js/vendor/holder.min.js"></script>
+  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  <script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+
+  <script>
+    
+    function doAnalysis() {
+
+      var doing = document.getElementById("input").value;
+      var date = new Date(doing); //建立今天的日期
+      var year = date.getFullYear(); //getyear取得1900到至今的值
+      var month = date.getMonth() + 1; //此功能從0開始
+      var day = date.getDate();
+      var addtotal = year.toString() + month.toString() + day.toString(); //轉成字串相加
+      var name = check_key(month, day);
+      var url =
+        "https://gist.githubusercontent.com/dinowang/5290d4cebf96a666c29ab0878afeb2f1/raw/9516581cb54154d070cf287ebd31d9bce217a495/" +
+        name + ".json";
+      $.ajax({
+        type: "GET",
+        url: url,
+        data: null,
+        dataType: "json",
+        error: function (result, status, xhr) {
+          alert("無法取得 server 上的資料");
+        },
+        success: function (result, status, xhr) {
+          var index = count(addtotal);
+          var html = "<p><span class='label label-info'>"+
+                      addtotal+"</span>出生的你，星座是"+ 
+                      result.name + "</p>"+
+                      "<p>你的生命靈數：<br>" + index + ". " + 
+                      result.lookup[index - 1]+"</P>";
+          $("<li></li>")
+            .addClass("list-group-item")
+            .html(html)
+            .prependTo("#result");
+        }
+
+      })
+
+
+      // alert(horoscopeData[check_key(month, day)].lookup[count(addtotal)-1]);
+      // //
+      // count(addtotal);//取得方法
+    }
+    $("#input").keyup(function (event) {
+        if (event.keyCode == 13) {
+          doAnalysis();
+        }
+      });
+
+    function count(addtotal) {
+      while (addtotal.length > 1) {
+        var a = 0;
+        for (var i = 0; i < addtotal.length; i++) {
+          a += parseInt(addtotal[i]);
+        }
+        addtotal = a.toString();
+      }
+
+      return addtotal;
+    }
+
+    function check_key(m, d) {
+      if ((m == 1 && d >= 21) || (m == 2 && d <= 19)) {
+        return "aquarius";
+      }
+      if ((m == 2 && d >= 21) || (m == 3 && d <= 19)) {
+        return "pisces";
+      }
+      if ((m == 3 && d >= 21) || (m == 4 && d <= 19)) {
+        return "aries";
+      }
+      if ((m == 4 && d >= 21) || (m == 5 && d <= 19)) {
+        return "taurus";
+      }
+      if ((m == 5 && d >= 21) || (m == 6 && d <= 19)) {
+        return "gemini";
+      }
+      if ((m == 6 && d >= 21) || (m == 7 && d <= 19)) {
+        return "cancer";
+      }
+      if ((m == 7 && d >= 21) || (m == 8 && d <= 19)) {
+        return "leo";
+      }
+      if ((m == 8 && d >= 21) || (m == 9 && d <= 19)) {
+        return "virgo";
+      }
+      if ((m == 9 && d >= 21) || (m == 10 && d <= 19)) {
+        return "libra";
+      }
+      if ((m == 10 && d >= 21) || (m == 11 && d <= 19)) {
+        return "scorpio";
+      }
+      if ((m == 11 && d >= 21) || (m == 12 && d <= 19)) {
+        return "sagittarius";
+      }
+      if ((m == 12 && d >= 21) || (m == 1 && d <= 19)) {
+        return "capricorn";
+      }
+    }
+  </script>
+</body>
+
+</html>

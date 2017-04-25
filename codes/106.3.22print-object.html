@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <div id="result"></div>
+<pre>
+    <script>
+        var x = {
+            lastName: "Hello",
+            firstName: "Kitty",
+            gender: "Female"
+        };
+        for(var prop in x){
+            var value=x[prop];
+            document.writeln("屬性"+prop+"="+value);
+        }
+    </script>
+</pre>
+</body>
+
+</html>

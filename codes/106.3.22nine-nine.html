@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<style>
+    em {
+        color: pink;
+    }
+</style>
+
+<body>
+    <div id="result"></div>
+    <pre>
+    <script>
+        for (var i = 2; i < 10; i++) {
+            for (var j = 1; j < 10; j++) {
+                var result = i * j;
+                var text=(i + "x" + j + "=" + result);
+                var A=document.createElement("div");
+                    A.innerHTML="<em>"+i+"</em>"+"*"+"<em>"+j+"</em>"+"="+"<em>"+result+"</em>";
+                    document.getElementById("result").appendChild(A);
+                                                                                                        
+            }
+                    }
+                    
+    </script>
+    </pre>
+</body>
+
+</html>

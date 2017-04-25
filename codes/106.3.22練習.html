@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        h1 {
+            color: red;
+        }
+        
+        h2 {
+            color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    計算結果為:
+    <div id="result"> </div>
+    <button id="show">顯示結果</button>
+    <pre><script>
+            // 在這裡填入你的 JavaScript 的測試程式
+            // document.writeln() 類似 C# 的 Console.WriteLine()
+            // prompt() 類似 C# 的 Console.ReadLine()
+
+            
+            // var a = 1;
+            // var b = 2;
+
+            // document.writeln(a + b);
+
+            // var userInput = prompt("請輸入數值：", 123);
+
+document.getElementById("show").onclick=docalculate;function docalculate(){
+var tempc=prompt("請輸入攝氏溫度");
+var tempf=(tempc*1.8)+32;
+var text=("攝氏"+tempc+"度,等於華氏"+tempf+"度");
+//  document.writeln(guesssRecord.correct+guesssRecord.userAnswer+guesssRecord.time);
+// if(tempc>20){
+// var h1=document.createElement("h1");
+// h1.innerHTML=text;
+// document.getElementById("result").appendChild(h1);
+// }
+// else{
+// var h2=document.createElement("h2");
+// h2.innerHTML=text;
+// document.getElementById("result").appendChild(h2);
+// }
+// var strong=document.createElement("strong");
+// strong.innerHTML=text;
+// document.getElementById("result").appendChild(strong);
+if(tempc>20){
+var strong=document.createElement("strong");
+strong.innerHTML="<h1>"+text+"</h1>";
+document.getElementById("result").appendChild(strong);
+}
+else{
+var strong=document.createElement("strong");
+strong.innerHTML="<h2>"+text+"</h2>";
+document.getElementById("result").appendChild(strong);
+}
+// var strong=document.createElement("strong");
+// strong.innerHTML=text;
+// document.getElementById("result").appendChild(strong);
+                  }
+
+        </script></pre>
+</body>
+
+</html>
